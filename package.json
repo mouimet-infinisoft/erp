@@ -1,0 +1,11 @@
+{
+  "name": "@infini-soft/erp",
+  "version": "1.0.0",
+  "description": "Infinisoft ERP Cloud Business Solution",
+  "main": "index.js",
+  "author": "Martin Ouimet",
+  "license": "MIT",
+  "devDependencies": {
+    "lerna": "^4.0.0"
+  }
+}
