@@ -1,0 +1,29 @@
+{
+  "name": "@infini-soft/erp-models",
+  "version": "1.0.0",
+  "description": "Solution Data Model Schemas",
+  "author": "Martin Ouimet <mouimet@infini-soft.com>",
+  "homepage": "https://github.com/mouimet-infinisoft/erp#readme",
+  "license": "ISC",
+  "main": "lib/erp-models.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mouimet-infinisoft/erp.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/mouimet-infinisoft/erp/issues"
+  }
+}

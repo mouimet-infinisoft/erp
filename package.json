@@ -1,6 +1,8 @@
 {
   "name": "@infini-soft/erp",
+  "private":true,
   "version": "1.0.0",
+  "workspaces": ["packages/*"],
   "description": "Infinisoft ERP Cloud Business Solution",
   "main": "index.js",
   "author": "Martin Ouimet",
