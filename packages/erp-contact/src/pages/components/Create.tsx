@@ -6,8 +6,8 @@
 import { useCategories } from '@/hooks/useCategories';
 import { useOperations } from '@/hooks/useOperations';
 import ProDescriptions from '@ant-design/pro-descriptions';
-import { ProFormSelect, StepsForm } from '@ant-design/pro-form';
-import { PersonForm } from '@infini-soft/kitchensink/lib/Components/Forms';
+import { StepsForm } from '@ant-design/pro-form';
+import { ContactForm } from '@infini-soft/kitchensink/lib/Components/Forms';
 import { off, on, trigger } from '@infini-soft/utils/lib/Events';
 import { Button, Modal } from 'antd';
 import React, { useEffect } from 'react';
@@ -77,7 +77,7 @@ const Create = () => {
               return true;
             }}
           >
-            <PersonForm edit={false} />
+            <ContactForm />
           </StepsForm.StepForm>
           <StepsForm.StepForm<{ name: string }>
             name="More information"

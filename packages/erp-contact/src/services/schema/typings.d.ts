@@ -1,22 +1,25 @@
 declare namespace API {
-  type Response = {
+  type Success = {
     success?: boolean;
     data?: Record<string, any>;
   };
 
-  type PageParams = {
-    current?: number;
-    pageSize?: number;
-    keyword?: string;
+  type Error = {
+    /** Error code */
+    errorCode?: string;
+    /** Error message */
+    errorMessage?: string;
+    /** false */
+    success?: boolean;
   };
 
   type Item = {
-    /** Partition Key. Ex: TENANT1334243, TENANT42543 */
-    PK: string;
-    /** Sort Key - Ex: PERSON12121, CASE542124 */
-    SK: string;
-    /** Global Secondary Index - Ex: PARENT, CASE, DOCUMENT */
-    GSIPK: string;
+    /** Partition Key */
+    PK?: string;
+    /** Sort Key */
+    SK?: string;
+    /** Category - Global Secondary Index */
+    GSIPK?: string;
     /** Item is enabled or disabled */
     enabled?: boolean;
     /** Item creator userid */
@@ -31,15 +34,9 @@ declare namespace API {
     createdAt?: string;
     /** Lasy updated date in ISO 8601 format */
     updatedAt?: string;
-  } & Person;
-
-  type Person = {
-    name?: string;
-    email?: string;
-    address?: string;
-    birthdate?: string;
-    telephones?: string[];
-  };
+    /** Relation in the graph */
+    relatedWith?: string[];
+  } & Contact;
 
   type List = {
     data?: Item[];
@@ -48,13 +45,12 @@ declare namespace API {
     success?: boolean;
   };
 
-  type ErrorResponse = {
-    /** Error code */
-    errorCode: string;
-    /** Error message */
-    errorMessage?: string;
-    /** Request success or not */
-    success?: boolean;
+  type Contact = {
+    name?: string;
+    email?: string;
+    address?: string;
+    website?: string;
+    telephones?: string[];
   };
 
   type listParams = {
@@ -62,7 +58,7 @@ declare namespace API {
     current?: number;
     /** Items per page */
     pageSize?: number;
-    /** Items per page */
+    /** Search term */
     keyword?: string;
   };
 

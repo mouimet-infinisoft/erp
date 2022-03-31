@@ -2,7 +2,7 @@
 /* eslint-disable */
 import { request } from 'umi';
 
-/** Read one person GET /api/erp-contact/${param0}||${param1} */
+/** ReadOne GET /api/erp-contact/${param0}||${param1} */
 export async function read(
   // 叠加生成的Param类型 (非body参数swagger默认没有生成对象)
   params: API.readParams,

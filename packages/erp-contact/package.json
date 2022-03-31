@@ -53,7 +53,7 @@
     "@ant-design/pro-list": "^1.21.45",
     "@ant-design/pro-skeleton": "^1.0.5",
     "@ant-design/pro-table": "^2.69.0",
-    "@infini-soft/kitchensink": "^1.0.0",
+    "@infini-soft/kitchensink": "^1.0.4",
     "@infini-soft/logger": "^1.0.0",
     "@infini-soft/utils": "^1.2.0",
     "@umijs/plugin-openapi": "^1.3.2",
