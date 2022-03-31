@@ -31,6 +31,6 @@
      /** Configuraiton to generate routes, mocks, code gen */
      appName: config.appName,
      /** Title in App.tsx page header */
-     title: `Welcome to ${config.appName}`
+     title: `${config.appName}`
  };
  

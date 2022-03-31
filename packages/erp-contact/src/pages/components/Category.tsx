@@ -9,7 +9,7 @@ import { Avatar } from "antd"
 import React from "react"
 
 const defaultAvatar = <Avatar
-    src=" https://gw.alipayobjects.com/zos/bmw-prod/2dd637c7-5f50-4d89-a819-33b3d6da73b6.svg"
+    src="https://gw.alipayobjects.com/zos/bmw-prod/2dd637c7-5f50-4d89-a819-33b3d6da73b6.svg"
     size={'large'}
 />
 

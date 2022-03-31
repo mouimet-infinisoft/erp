@@ -41,7 +41,7 @@ const Update = () => {
         }}
     >
         
-        <ContactForm  />
+        <ContactForm edit  />
     </ModalForm>
 }
 

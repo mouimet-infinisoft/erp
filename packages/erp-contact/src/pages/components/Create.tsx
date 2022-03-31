@@ -80,7 +80,7 @@ const Create = () => {
               return true;
             }}
           >
-            <ContactForm />
+            <ContactForm edit={false} />
           </StepsForm.StepForm>
           <StepsForm.StepForm<{ name: string }>
             name="More information"
