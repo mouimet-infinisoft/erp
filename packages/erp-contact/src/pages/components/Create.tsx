@@ -6,11 +6,12 @@
 import { useCategories } from '@/hooks/useCategories';
 import { useOperations } from '@/hooks/useOperations';
 import ProDescriptions from '@ant-design/pro-descriptions';
-import { StepsForm } from '@ant-design/pro-form';
+import { ProFormInstance, StepsForm } from '@ant-design/pro-form';
 import { ContactForm } from '@infini-soft/kitchensink/lib/Components/Forms';
 import { off, on, trigger } from '@infini-soft/utils/lib/Events';
 import { Button, Modal } from 'antd';
-import React, { useEffect } from 'react';
+import { useForm } from 'antd/lib/form/Form';
+import React, { useEffect, useRef } from 'react';
 import CategoryList from './Category';
 import { columns } from './Columns';
 import styles from './index.less';
@@ -26,6 +27,7 @@ const Create = () => {
   };
   const [activeCategoryKey, setCategoryKey] = React.useState<any>();
   const { getCategories } = useCategories();
+  const formRef = useRef<ProFormInstance>();
 
   useEffect(() => {
     on('ui.open.create', eventHandler);
@@ -46,6 +48,7 @@ const Create = () => {
         onCancel={handleClose}
       >
         <StepsForm<API.Item>
+          formRef={formRef}
           onFinish={async (value) => {
             const success = await handleCreate(value);
 
@@ -98,12 +101,13 @@ const Create = () => {
             <ProDescriptions<API.Item>
               column={2}
               title={state?.name}
-              request={async () => ({
-                data: state || {},
-              })}
-              params={{
-                id: state?.name,
-              }}
+              // request={async () => ({
+              //   data: state || {},
+              // })}
+              // params={{
+              //   id: state?.name,
+              // }}
+              dataSource={formRef?.current?.getFieldsValue()}
               columns={columns}
             />
           </StepsForm.StepForm>

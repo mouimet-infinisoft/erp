@@ -5,7 +5,7 @@
  */
 import { useOperations } from "@/hooks/useOperations";
 import { ModalForm } from "@ant-design/pro-form";
-import { PersonForm } from "@infini-soft/kitchensink/lib/Components/Forms";
+import { ContactForm } from "@infini-soft/kitchensink/lib/Components/Forms";
 import { off, on, trigger } from "@infini-soft/utils/lib/Events";
 import Form from "antd/lib/form";
 import React, { useEffect } from "react";
@@ -41,7 +41,7 @@ const Update = () => {
         }}
     >
         
-        <PersonForm edit />
+        <ContactForm  />
     </ModalForm>
 }
 
