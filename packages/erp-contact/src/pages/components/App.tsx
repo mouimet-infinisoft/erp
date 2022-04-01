@@ -10,12 +10,13 @@
 import { useOperations } from '@/hooks/useOperations';
 import { PageContainer } from '@ant-design/pro-layout';
 import ProTable, { ActionType } from '@ant-design/pro-table';
+import { Icon } from '@iconify/react';
 import { CustomEventListener, off, on } from '@infini-soft/utils/lib/Events';
+import { Typography } from 'antd';
 import React, {
-    useEffect,
-    useRef
+  useEffect,
+  useRef
 } from 'react';
-import icConfig from '../../../config/icConfig';
 import { columns } from './Columns';
 import Create from './Create';
 import Filter from './Filter';
@@ -54,7 +55,16 @@ const App = () => {
   }, [reloadEventHandler, searchEventHandler])
 
   return (
-    <PageContainer title={icConfig.title} className={styles.root}>
+    <PageContainer title={<>
+      <div style={{display: 'flex'}}>
+
+        <Icon icon="bi:person-badge" height="48" style={{marginRight: '1rem'}}/>
+
+        <Typography.Title level={1}>
+          Contact Center
+        </Typography.Title>
+
+      </div></>} className={styles.root}>
       <ProTable
         actionRef={actionRef}
         rowKey="SK"

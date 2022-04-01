@@ -26,7 +26,8 @@ const Category = ({ title, avatar = defaultAvatar, description, value }: Categor
         avatar={avatar}
         description={description}
         value={value}
-        key={value}
+        key={value}        
+        
     />
 }
 
@@ -37,9 +38,8 @@ type CategoryListProps = {
 
 const CategoryList = ({ list, groupProps }: CategoryListProps) => {
     return <CheckCard.Group
-
-    // style={{display: 'flex',  justifyContent: 'center', flexWrap: 'wrap', width: 700  }}
-    {...groupProps}
+    {...groupProps}    
+    
   >
         {list.map(i => <Category {...i} key={i.value}/>)}
     </CheckCard.Group>

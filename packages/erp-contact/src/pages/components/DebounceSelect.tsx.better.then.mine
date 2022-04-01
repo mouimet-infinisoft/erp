@@ -1,0 +1,113 @@
+import { useOperations } from '@/hooks/useOperations';
+import { Icon } from '@iconify/react';
+import { Select, Spin, Typography } from 'antd';
+import { SelectProps } from 'antd/es/select';
+import debounce from 'lodash/debounce';
+import React from 'react';
+
+const { Option } = Select
+
+export interface DebounceSelectProps<ValueType = any>
+  extends Omit<SelectProps<ValueType>, 'options' | 'children'> {
+  fetchOptions: (search: string) => Promise<ValueType[]>;
+  debounceTimeout?: number;
+}
+
+function DebounceSelect<
+  ValueType extends { key?: string; label: React.ReactNode; value: string | number } = any,
+  >({ fetchOptions, debounceTimeout = 800, ...props }: DebounceSelectProps) {
+  const [fetching, setFetching] = React.useState(false);
+  const [options, setOptions] = React.useState<(ValueType & API.Item)[]>([]);
+  const fetchRef = React.useRef(0);
+
+
+  const debounceFetcher = React.useMemo(() => {
+    const loadOptions = (value: string) => {
+      fetchRef.current += 1;
+      const fetchId = fetchRef.current;
+      setOptions([]);
+      setFetching(true);
+
+      fetchOptions(value).then(newOptions => {
+        if (fetchId !== fetchRef.current) {
+          // for fetch callback order
+          return;
+        }
+
+        setOptions(newOptions);
+        setFetching(false);
+      });
+    };
+
+    return debounce(loadOptions, debounceTimeout);
+  }, [fetchOptions, debounceTimeout]);
+
+  return (
+    <Select<ValueType>
+      labelInValue
+      filterOption={false}
+      onSearch={debounceFetcher}
+      notFoundContent={fetching ? <Spin size="small" /> : null}
+      {...props}
+    >
+      {options?.map(({ SK, GSIPK, name, email = '', telephones = [], address = '' }) => <Option key={SK} value={SK}>
+
+        <div style={{ display: 'flex', alignItems: 'flex-start' }}>
+          <Icon icon="bi:person-badge" height="16" style={{ marginRight: '0.35rem' }} />
+          <div>
+            <Typography.Title style={{ display: 'inline' }} level={5}>{name},</Typography.Title><Typography.Text style={{ display: 'inline' }}>{` ${GSIPK}`}</Typography.Text>
+            <Typography>{email}</Typography>
+            <Typography>{address}</Typography>
+            <Typography>{telephones?.[0] ?? ''}</Typography>
+          </div>
+        </div>
+
+      </Option>) ?? []}
+
+    </Select>
+  );
+}
+
+// Usage of DebounceSelect
+interface UserValue {
+  label: string;
+  value: string;
+}
+
+
+
+const Demo = () => {
+  const [value, setValue] = React.useState<UserValue[]>([]);
+  const { handleSearch } = useOperations()
+
+  async function fetchUserList(username: string): Promise<any> {
+    console.log('fetching user', username);
+
+
+    return handleSearch(username)
+      .then(
+        (body = []) =>
+          body
+            .map((contact) => ({ value: contact.SK, label: contact.name, key: contact.PK, ...contact }))
+      )
+  }
+
+
+  return (
+    <DebounceSelect
+      maxTagTextLength={100}
+      style={{ width: '100%' }}
+      showSearch
+      mode='tags'
+      // mode="multiple"
+      value={value}
+      placeholder="Select users"
+      fetchOptions={fetchUserList}
+      onChange={newValue => {
+        setValue(newValue);
+      }}
+    />
+  );
+};
+
+export default Demo

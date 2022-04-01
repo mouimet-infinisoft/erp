@@ -53,6 +53,7 @@
     "@ant-design/pro-list": "^1.21.45",
     "@ant-design/pro-skeleton": "^1.0.5",
     "@ant-design/pro-table": "^2.69.0",
+    "@iconify/react": "^3.2.1",
     "@infini-soft/kitchensink": "^1.0.4",
     "@infini-soft/logger": "^1.0.0",
     "@infini-soft/utils": "^1.2.0",
@@ -68,6 +69,7 @@
   "devDependencies": {
     "@faker-js/faker": "^6.0.0",
     "@types/express": "^4.17.13",
+    "@types/lodash": "^4.14.181",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "@umijs/preset-react": "1.x",

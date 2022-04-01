@@ -30,7 +30,6 @@ export const columns: ProColumns<API.Item>[] = [
         dataIndex: 'GSIPK',
         sorter: Sorters.bubble('GSIPK'),
         filters: true,
-        valueType: 'radioButton',
     },
     {
         title: 'Address',
@@ -57,9 +56,25 @@ export const columns: ProColumns<API.Item>[] = [
         render: (_, record) => record.email,
     },
     {
+        title: 'Website',
+        dataIndex: 'website',
+        sorter: Sorters.bubble('website'),
+        valueType: 'text',
+        hideInTable: true
+    },
+    {
+        title: 'Relation',
+        dataIndex: 'relatedWith',
+        sorter: Sorters.bubble('relatedWith'),
+        valueType: 'text',
+        hideInTable: true
+    },
+    {
         title: 'Action',
         dataIndex: 'option',
         valueType: 'option',
+        hideInForm: true,
+        hideInDescriptions: true,
         render: (_, record) => [
             <a
                 key="action-update"

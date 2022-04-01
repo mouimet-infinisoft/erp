@@ -70,13 +70,12 @@ export const useOperations = () => {
     const { hide } = logger.custom({ message: 'Searching...' }) as any;
 
     try {
-      await runRequest({ search: term })
+      const result = await runRequest({ search: term })
       hide();
-      return true;
+      return result;
     } catch (error) {
       hide();
       logger.error({ message: 'Unable to complete search!', context: error });
-      return false;
     }
   };
 

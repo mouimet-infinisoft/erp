@@ -25,5 +25,8 @@
   },
   "bugs": {
     "url": "https://github.com/mouimet-infinisoft/erp/issues"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.181"
   }
 }

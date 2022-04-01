@@ -12,7 +12,7 @@ import styles from './index.less';
 
 const Filter = () => {
     const { categories } = useCategories()
-    const [filterActiveKey, setFilterActiveKey] = React.useState('none');
+    const [filterActiveKey, setFilterActiveKey] = React.useState('All');
 
     const renderBadge = (count: number, active = false) => {
         return (
